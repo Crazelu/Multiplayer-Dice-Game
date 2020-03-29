@@ -25,7 +25,7 @@ class Cradice():
         
     def play(self, players, rounds):
         '''
-        The main function.
+        The main method, if you'll have it.
         Method takes two arguments:
             players - number of players
             rounds - number of rounds
