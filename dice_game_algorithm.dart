@@ -9,10 +9,11 @@ void main(){
 class Cradice{
 
   void start(){
-    print("Enter number of players:");
-    var players = int.parse(stdin.readLineSync());
-
-    while (players < 2){
+    try{
+      print("Enter number of players:");
+      var players = int.parse(stdin.readLineSync());
+      
+      while (players < 2){
       print('Minimum of two players allowed');
       players = int.parse(stdin.readLineSync());
     }//While loop
@@ -28,6 +29,13 @@ class Cradice{
     Cradice cradice =  new Cradice();
     cradice.play(players, 3, namelist);
 
+    }
+    catch (FormatException){
+      print('Invalid input');
+      Cradice cradice = new Cradice();
+      cradice.start();
+    }
+    
   }//start method
 
   void play(int players, int rounds, List namelist){
