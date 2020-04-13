@@ -23,7 +23,25 @@ class Cradice{
     for(int i=0; i<players; i++){
       print("Enter player ${i+1}'s name:");
       var name = stdin.readLineSync();
-      namelist.add(name);
+
+      if (name.isNotEmpty){
+        namelist.add(name);
+      }
+
+      bool empty = name.isEmpty;
+
+      while (empty){
+        print('Enter a valid name.');
+        var name = stdin.readLineSync();
+        if (name.isEmpty){
+          continue;
+        }
+        else{
+          namelist.add(name);
+          break;
+        }
+      }
+      
     }
 
     Cradice cradice =  new Cradice();
@@ -104,12 +122,12 @@ class Cradice{
     }//for loop
 
     Cradice cradice =  new Cradice();
-    if(cradice.count(scorelist, highscore) == cradice.withoutNullLength(scorelist)){
+    if(cradice.count(scorelist, highscore) > 1 && cradice.count(scorelist, highscore) == cradice.withoutNullLength(scorelist)){
       print("\nIt's a tie!\nTie Breaker!\n");
       cradice.play(cradice.withoutNullLength(scorelist), 2, namelist);
     }
     else{
-      print("\n${namelist[winner]} wins with ${highscore} points.");
+      print("\n${namelist[winner]} wins with $highscore points.");
       cradice.playAgain();
     }
     
